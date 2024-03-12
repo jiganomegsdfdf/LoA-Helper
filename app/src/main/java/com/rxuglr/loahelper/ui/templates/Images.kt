@@ -29,9 +29,7 @@ object Images {
             },
             painter = painterResource(
                 id = when (codename) {
-                    codenames[0], codenames[1] -> R.drawable.vayu
-                    codenames[2] -> R.drawable.nabu
-                    codenames[3], codenames[4] -> R.drawable.raphael
+                    codenames[0] -> R.drawable.nabu
                     else -> R.drawable.nabu
                 }
             ),

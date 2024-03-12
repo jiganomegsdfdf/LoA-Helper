@@ -301,7 +301,7 @@ object Buttons {
                             showMountDialog.value,
                             onDismiss = ({ showMountDialog.value = false; }),
                             onConfirm = ({
-                                umountubuntu()
+                                umountlinux()
                                 showMountDialog.value = false
                             })
                         )

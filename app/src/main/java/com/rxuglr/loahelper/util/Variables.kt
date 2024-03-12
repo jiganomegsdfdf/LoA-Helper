@@ -15,7 +15,7 @@ object Variables {
     val codenames: Array<String> =
         arrayOf("nabu")
     val nomodem: Array<String> = arrayOf("nabu")
-    val sensors: Array<String> = arrayOf(0)
+    val sensors: Array<String> = arrayOf("")
     var uefilist: Array<Int> = arrayOf(0)
 
     val ram: String = RAM().getMemory(loahApp)

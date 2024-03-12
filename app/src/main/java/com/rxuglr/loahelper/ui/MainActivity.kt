@@ -59,9 +59,6 @@ import com.rxuglr.loahelper.ui.templates.Cards.InfoCard
 import com.rxuglr.loahelper.ui.templates.Cards.pxtodp
 import com.rxuglr.loahelper.ui.templates.Images.DeviceImage
 import com.rxuglr.loahelper.ui.theme.LOAHelperTheme
-import com.rxuglr.loahelper.util.Commands.checksensors
-import com.rxuglr.loahelper.util.Commands.dumpmodem
-import com.rxuglr.loahelper.util.Commands.dumpsensors
 import com.rxuglr.loahelper.util.Variables.codename
 import com.rxuglr.loahelper.util.Variables.nomodem
 import com.rxuglr.loahelper.util.Variables.unsupported
