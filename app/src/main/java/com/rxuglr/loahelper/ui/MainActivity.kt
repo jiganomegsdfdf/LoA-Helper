@@ -23,7 +23,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AssistChip
@@ -135,25 +134,6 @@ class MainActivity : ComponentActivity() {
                         //    )
                     },
                     actions = {
-                        if (home.value) {
-                            IconButton(onClick = {
-                                navController.navigate("settings") {
-                                    navController.graph.startDestinationRoute?.let { route ->
-                                        popUpTo(route) {
-                                            saveState = true
-                                        }
-                                    }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
-                            }) {
-                                Icon(
-                                    imageVector = Icons.Filled.Settings,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
-                                )
-                            }
-                        }
                         if (!home.value) {
                             IconButton(onClick = {
                                 navController.navigate("main") {

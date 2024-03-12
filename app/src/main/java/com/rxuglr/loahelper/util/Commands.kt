@@ -41,7 +41,7 @@ object Commands {
 
     fun mountlinux() {
         ShellUtils.fastCmd("mkdir /mnt/sdcard/linux || true")
-        ShellUtils.fastCmd("su -mm -c mount.ntfs /dev/block/by-name/linux /sdcard/linux")
+        ShellUtils.fastCmd("su -mm -c mount.ext4 /dev/block/by-name/linux /sdcard/linux")
     }
 
     fun umountlinux() {
