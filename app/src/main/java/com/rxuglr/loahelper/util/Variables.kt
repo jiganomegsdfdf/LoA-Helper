@@ -39,20 +39,20 @@ object Variables {
             paddingValue = 20.dp
             lineHeight = 20.sp
         }
-        if ((ShellUtils.fastCmd("find /mnt/sdcard/UEFI/ -type f  | grep .img").isEmpty())) {
+        if ((ShellUtils.fastCmd("find /sdcard/UEFI/ -type f  | grep .img").isEmpty())) {
             uefilist += 99
         } else {
-            if (ShellUtils.fastCmd("find /mnt/sdcard/UEFI/ -type f  | grep .img | grep 120")
+            if (ShellUtils.fastCmd("find /sdcard/UEFI/ -type f  | grep .img | grep 120")
                     .isNotEmpty()
             ) {
                 uefilist += 120
             }
-            if (ShellUtils.fastCmd("find /mnt/sdcard/UEFI/ -type f  | grep .img | grep 60")
+            if (ShellUtils.fastCmd("find /sdcard/UEFI/ -type f  | grep .img | grep 60")
                     .isNotEmpty()
             ) {
                 uefilist += 60
             }
-            if ((ShellUtils.fastCmd("find /mnt/sdcard/UEFI/ -type f  | grep .img")
+            if ((ShellUtils.fastCmd("find /sdcard/UEFI/ -type f  | grep .img")
                     .isNotEmpty()) and (!uefilist.contains(60)) and !uefilist.contains(120)
             ) {
                 uefilist += 1

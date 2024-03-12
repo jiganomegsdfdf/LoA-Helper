@@ -12,11 +12,11 @@ object Commands {
         val slot = ShellUtils.fastCmd("getprop ro.boot.slot_suffix")
         if (where == 1) {
             mountlinux()
-            ShellUtils.fastCmd("dd if=/dev/block/bootdevice/by-name/boot$slot of=/sdcard/linux/boot.img bs=32MB")
+            ShellUtils.fastCmd("dd if=/dev/block/by-name/boot$slot of=/sdcard/linux/boot.img bs=32MB")
             umountlinux()
         } else if (where == 2) {
             ShellUtils.fastCmd("mkdir /sdcard/helper || true ")
-            ShellUtils.fastCmd("dd if=/dev/block/bootdevice/by-name/boot$slot of=/sdcard/helper/boot.img")
+            ShellUtils.fastCmd("dd if=/dev/block/by-name/boot$slot of=/sdcard/helper/boot.img")
         }
     }
 
@@ -35,18 +35,18 @@ object Commands {
     }
 
     fun mountstatus(): Boolean {
-        return ShellUtils.fastCmd("mount | grep " + ShellUtils.fastCmd("readlink -fn /dev/block/bootdevice/by-name/linux"))
+        return ShellUtils.fastCmd("mount | grep " + ShellUtils.fastCmd("readlink -fn /dev/block/by-name/linux"))
             .isEmpty()
     }
 
     fun mountlinux() {
-        ShellUtils.fastCmd("mkdir /mnt/sdcard/linux || true")
-        ShellUtils.fastCmd("su -mm -c mount.ext4 /dev/block/by-name/linux /sdcard/linux")
+        ShellUtils.fastCmd("mkdir /sdcard/linux || true")
+        ShellUtils.fastCmd("su -mm -c mount /dev/block/by-name/linux /sdcard/linux")
     }
 
     fun umountlinux() {
-        ShellUtils.fastCmd("su -mm -c umount /mnt/sdcard/linux")
-        ShellUtils.fastCmd("rmdir /mnt/sdcard/linux")
+        ShellUtils.fastCmd("su -mm -c umount /sdcard/linux")
+        ShellUtils.fastCmd("rmdir /sdcard/linux")
     }
 
 
@@ -54,13 +54,13 @@ object Commands {
         val uefipath = arrayOf("", "", "")
         if (uefilist.contains(120)) {
             uefipath[0] =
-                ShellUtils.fastCmd("find /mnt/sdcard/UEFI/ -type f  | grep .img | grep 120")
+                ShellUtils.fastCmd("find /sdcard/UEFI/ -type f  | grep .img | grep 120")
         }
         if (uefilist.contains(60)) {
-            uefipath[1] += ShellUtils.fastCmd("find /mnt/sdcard/UEFI/ -type f  | grep .img | grep 60")
+            uefipath[1] += ShellUtils.fastCmd("find /sdcard/UEFI/ -type f  | grep .img | grep 60")
         }
         if (uefilist.contains(1)) {
-            uefipath[2] += ShellUtils.fastCmd("find /mnt/sdcard/UEFI/ -type f  | grep .img")
+            uefipath[2] += ShellUtils.fastCmd("find /sdcard/UEFI/ -type f  | grep .img")
         }
         return uefipath[type]
     }
